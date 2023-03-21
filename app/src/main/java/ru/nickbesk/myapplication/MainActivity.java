@@ -91,11 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.action_db: {
-                Intent intent = new Intent(MainActivity.this, DBActivity.class);
-                startActivity(intent);
+                Intent DBIntent = new Intent(MainActivity.this, DBActivity.class);
+                startActivity(DBIntent);
                 return true;
             }
             case R.id.action_web: {
+                Intent WebIntent = new Intent(MainActivity.this, WebActivity.class);
+                startActivity(WebIntent);
                 return true;
             }
             case R.id.action_clear: {

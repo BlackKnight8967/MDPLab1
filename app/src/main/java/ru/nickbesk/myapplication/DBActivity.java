@@ -28,10 +28,6 @@ public class DBActivity extends AppCompatActivity {
         mydb.close();
 
     }
-    public void backToMain(View view) {
-        Intent intent = new Intent(DBActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
     public void addUser(View view) {
         TextView v = findViewById(R.id.queryInput);
         DataBase mydb = new DataBase(this);
