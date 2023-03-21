@@ -10,20 +10,19 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_cat1"
+        android:id="@+id/action_db"
         android:orderInCategory="100"
-        android:title="@string/action_1"
+        android:title="@string/open_db"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_cat2"
+        android:id="@+id/action_web"
         android:orderInCategory="100"
-        android:title="@string/action_2"
+        android:title="@string/open_web"
         app:showAsAction="never"/>
-
     <item
-        android:id="@+id/action_cat3"
+        android:id="@+id/action_clear"
         android:orderInCategory="100"
-        android:title="@string/action_3"
+        android:title="@string/clear"
         app:showAsAction="never"/>
 </menu>

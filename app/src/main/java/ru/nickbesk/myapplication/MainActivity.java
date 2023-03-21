@@ -2,17 +2,16 @@ package ru.nickbesk.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.*;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.view.Menu;
-import ru.nickbesk.myapplication.ButtonReceiver;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -30,8 +29,12 @@ public class MainActivity extends AppCompatActivity {
         editText.setGravity(Gravity.TOP);
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Уведомление", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.TOP, 0, 0);
+        DataBase mydb = new DataBase(this);
+        SQLiteDatabase sqldb = mydb.getWritableDatabase();
+        sqldb.close();
+        mydb.close();
         toast.show();
+
     }
     // Создание канала уведомлений
     private void createNotificationChannel() {
@@ -78,9 +81,34 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                return true;
+            }
+            case R.id.action_db: {
+                Intent intent = new Intent(MainActivity.this, DBActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            case R.id.action_web: {
+                return true;
+            }
+            case R.id.action_clear: {
+                TextView textView = findViewById(R.id.CodeInput);
+                textView.setText("");
+                return true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
+        }
+    }
+
+
 }
 
